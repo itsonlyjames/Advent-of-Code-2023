@@ -1,6 +1,4 @@
-import fs from 'fs'
-import path from 'path'
-const txt = fs.readFileSync(path.resolve(__dirname, './input.txt'), 'utf-8')
+const txt = Deno.readTextFileSync('./input.txt')
 
 const brackets = txt.split('')
 

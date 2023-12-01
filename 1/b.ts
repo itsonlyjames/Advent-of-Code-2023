@@ -1,10 +1,8 @@
-import fs from 'fs'
-import path from 'path'
-const txt = fs.readFileSync(path.resolve(__dirname, './input.txt'), 'utf-8')
+const txt = Deno.readTextFileSync('./input.txt')
 
-const array: any = []
-let pos: number = 0
-const value: any = {
+const array: string | number[][] = [[]]
+let pos = 0
+const value: { [key: string]: number } = {
     on: 1,
     tw: 2,
     thre: 3,
@@ -34,8 +32,8 @@ txt.split('\n').forEach((line: string) => {
     pos++
 })
 
-let total: number = 0
-array.forEach((val: string[], index: number) => {
+let total = 0
+array.forEach((val) => {
     const first = val[0]
     const last = val.pop()
     const combined = `${first}` + `${last}`

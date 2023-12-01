@@ -1,10 +1,8 @@
-import fs from 'fs'
-import path from 'path'
-const txt = fs.readFileSync(path.resolve(__dirname, './input.txt'), 'utf-8')
+const txt = Deno.readTextFileSync('./input.txt')
 
 const brackets = txt.split('')
 
-const left = brackets.filter((val) => val === '(').length
-const right = brackets.filter((val) => val === ')').length
+const left = brackets.filter((val: string) => val === '(').length
+const right = brackets.filter((val: string) => val === ')').length
 
 console.log('count', left - right)

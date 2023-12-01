@@ -1,8 +1,6 @@
-import fs from 'fs'
-import path from 'path'
-const txt = fs.readFileSync(path.resolve(__dirname, './input.txt'), 'utf-8')
+const txt = Deno.readTextFileSync('./input.txt')
 
-const array: any = []
+const array: number[][] = [[]]
 let pos = 0
 txt.split('\n').forEach((line) => {
     const split = line.split('')
@@ -17,11 +15,11 @@ txt.split('\n').forEach((line) => {
 })
 
 let total = 0
-array.forEach((val: string[]) => {
+array.forEach((val) => {
     const first = val[0]
     const last = val[val.length - 1]
     const combined = `${first}` + `${last}`
     total += parseInt(combined)
 })
 
-console.log(total)
+console.log('🎅', total)

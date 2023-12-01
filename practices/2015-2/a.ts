@@ -1,18 +1,16 @@
-import fs from 'fs'
-import path from 'path'
-const txt = fs.readFileSync(path.resolve(__dirname, './input.txt'), 'utf-8')
+const txt = Deno.readTextFileSync('./input.txt')
 
 const lines = txt.split('\n')
 
-let totalPart1: number = 0
-let totalPart2: number = 0
+let totalPart1 = 0
+let totalPart2 = 0
 
 lines.forEach((val) => {
     const running = val.split('x')
     const numbers = running.map((run) => parseInt(run))
 
     const [length, width, height] = numbers
-    let min = Math.min(length * width, width * height, height * length)
+    const min = Math.min(length * width, width * height, height * length)
     totalPart1 +=
         2 * length * width + 2 * width * height + 2 * height * length + min
 

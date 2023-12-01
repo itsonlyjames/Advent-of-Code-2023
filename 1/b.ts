@@ -18,7 +18,6 @@ const value: any = {
 
 txt.split('\n').forEach((line: string) => {
     if (!array[pos]) array[pos] = []
-
     const match = [
         ...line.matchAll(
             /on(?=e)|tw(?=o)|thre|four|five|six|seven|eigh(?=t)|nine|\d/g
@@ -32,7 +31,6 @@ txt.split('\n').forEach((line: string) => {
             array[pos].push(value[val[0]])
         }
     })
-
     pos++
 })
 

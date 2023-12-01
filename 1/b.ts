@@ -5,7 +5,7 @@ const txt = fs.readFileSync(path.resolve(__dirname, './input.txt'), 'utf-8')
 const lines = txt.split('\n')
 
 const array: any = []
-let pos = 0
+let pos: number = 0
 const value: any = {
     on: 1,
     tw: 2,
@@ -18,7 +18,7 @@ const value: any = {
     nine: 9
 }
 
-lines.forEach((line, index) => {
+lines.forEach((line: string) => {
     if (!array[pos]) array[pos] = []
 
     const match = [
@@ -38,14 +38,12 @@ lines.forEach((line, index) => {
     pos++
 })
 
-let total = 0
-array
-    .filter((n: any) => !!n)
-    .forEach((val: any) => {
-        const first = val[0]
-        const last = val.pop()
-        const combined = `${first}` + `${last}`
-        total += parseInt(combined)
-    })
+let total: number = 0
+array.forEach((val: string[], index: number) => {
+    const first = val[0]
+    const last = val.pop()
+    const combined = `${first}` + `${last}`
+    total += parseInt(combined)
+})
 
 console.log(total)

@@ -19,7 +19,7 @@ lines.forEach((line) => {
 })
 
 let total = 0
-array.forEach((val: any) => {
+array.forEach((val: string[]) => {
     const first = val[0]
     const last = val[val.length - 1]
     const combined = `${first}` + `${last}`

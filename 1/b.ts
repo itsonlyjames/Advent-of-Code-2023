@@ -2,8 +2,6 @@ import fs from 'fs'
 import path from 'path'
 const txt = fs.readFileSync(path.resolve(__dirname, './input.txt'), 'utf-8')
 
-const lines = txt.split('\n')
-
 const array: any = []
 let pos: number = 0
 const value: any = {
@@ -18,7 +16,7 @@ const value: any = {
     nine: 9
 }
 
-lines.forEach((line: string) => {
+txt.split('\n').forEach((line: string) => {
     if (!array[pos]) array[pos] = []
 
     const match = [

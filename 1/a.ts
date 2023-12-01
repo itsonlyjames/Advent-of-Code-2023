@@ -2,11 +2,9 @@ import fs from 'fs'
 import path from 'path'
 const txt = fs.readFileSync(path.resolve(__dirname, './input.txt'), 'utf-8')
 
-const lines = txt.split('\n')
-
 const array: any = []
 let pos = 0
-lines.forEach((line) => {
+txt.split('\n').forEach((line) => {
     const split = line.split('')
     if (!array[pos]) array[pos] = []
     split.forEach((val) => {

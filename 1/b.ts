@@ -21,7 +21,7 @@ txt.split('\n').forEach((line: string) => {
 
     const match = [
         ...line.matchAll(
-            /on(?=e)|tw(?=o)|thre|four|five|six|seven|eigh(?=t)|nine|1|2|3|4|5|6|7|8|9/g
+            /on(?=e)|tw(?=o)|thre|four|five|six|seven|eigh(?=t)|nine|\d/g
         )
     ]
     match.forEach((val) => {

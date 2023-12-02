@@ -2,20 +2,19 @@ const txt = Deno.readTextFileSync('./input.txt').split('\n')
 
 const counter = txt.reduce((counter, item, index) => {
     const newItem = item.split(/: |, |; /)
-    const thresholds: { [key: string]: number } = {
+    const colorThresholds: { [key: string]: number } = {
         red: 12,
         green: 13,
         blue: 14
     }
-    const colors = ['red', 'green', 'blue']
 
     const possible = newItem.every((val: string) => {
-        for (const color of colors) {
+        for (const color of Object.keys(colorThresholds)) {
             const regex = new RegExp(`\\d* ${color}`)
             const match = val.match(regex)
             if (match) {
                 const num = parseInt(match[0])
-                if (num > thresholds[color]) {
+                if (num > colorThresholds[color]) {
                     return false
                 }
             }

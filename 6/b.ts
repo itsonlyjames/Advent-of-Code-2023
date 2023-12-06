@@ -5,7 +5,7 @@ const distances: number[] = []
 lines.forEach((line) => {
     const nums = [...line.matchAll(/\d+/g)]
     let combined = ''
-    nums.forEach((num) => (combined = combined + parseInt(num[0])))
+    nums.forEach((num) => (combined = combined + num[0]))
     if (line.startsWith('Time')) times.push(parseInt(combined))
     if (line.startsWith('Distance')) distances.push(parseInt(combined))
 })

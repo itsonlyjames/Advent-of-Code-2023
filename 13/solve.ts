@@ -2,11 +2,8 @@ const input = Deno.readTextFileSync('./input.txt')
     .split(/\n\n/)
     .map((grid) => grid.split(/\n/).map((l) => l.split('')))
 
-const transpose: (pattern: string[][]) => string[][] = (pattern) => {
-    const res = Array(pattern[0].length).fill('')
-    for (const r of pattern) [...r].forEach((c, i) => (res[i] += c))
-    return res.map((l) => l.split(''))
-}
+const transpose = (matrix: string[][]) =>
+    matrix[0].map((_, c) => matrix.map((_, r) => matrix[r][c]))
 
 const checkMirror = (pattern: string[][], row: number, part: number) => {
     let badness = 0

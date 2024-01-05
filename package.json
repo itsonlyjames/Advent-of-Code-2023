@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@graph-algorithm/minimum-cut": "^2.0.0",
     "z3-solver": "^4.12.4"
   }
 }

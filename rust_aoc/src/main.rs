@@ -1,22 +1,23 @@
 use std::fs::read_to_string;
+use std::env;
 
 #[derive(Debug, Default)]
 struct Turn {
     red: usize,
     green: usize,
-    blue: usize
+    blue: usize,
 }
 
 impl Turn {
     fn is_valid(&self) -> bool {
-        self.red <= 12 && self.green <= 13 && self.blue <= 14    
+        self.red <= 12 && self.green <= 13 && self.blue <= 14
     }
 }
 
-fn solve(part: i32) -> usize { 
+fn solve(part: i32, file: &String) -> usize {
     let mut games = Vec::new();
 
-    let lines: Vec<String> = read_to_string("../2/input.txt")
+    let lines: Vec<String> = read_to_string(file)
         .expect("unable to open file")
         .split('\n')
         .filter(|s| !s.is_empty())
@@ -24,7 +25,7 @@ fn solve(part: i32) -> usize {
         .collect();
 
     for line in lines {
-        let(_, turns) = line.split_once(": ").unwrap();
+        let (_, turns) = line.split_once(": ").unwrap();
         let turns = turns.split("; ").collect::<Vec<_>>();
         let mut turn_list = Vec::new();
         for t in turns {
@@ -45,14 +46,13 @@ fn solve(part: i32) -> usize {
         games.push(turn_list);
     }
 
-
     let mut total = 0;
 
     if part == 1 {
-        'next_game: for (index, game) in games.iter().enumerate() {
+        'test_next_game: for (index, game) in games.iter().enumerate() {
             for turn in game {
                 if !turn.is_valid() {
-                    continue 'next_game;
+                    continue 'test_next_game;
                 }
             }
             total += index + 1
@@ -71,12 +71,15 @@ fn solve(part: i32) -> usize {
         }
     }
 
-    return total
+    return total;
 }
 
 fn main() {
-    for part in [1,2] {
-        let result = solve(part);
+    let args: Vec<String> = env::args().collect();
+    let input = &args[1];
+
+    for part in [1, 2] {
+        let result = solve(part, input);
         println!("Part {}: {}", part, result);
     }
 }
